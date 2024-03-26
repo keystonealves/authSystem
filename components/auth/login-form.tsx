@@ -58,6 +58,7 @@ export const LoginForm = () => {
             headerLabel="Olá! Identifique-se para acessar sua conta."
             backButtonLabel="Não tem uma conta?"
             backButtonHref="/auth/register"
+            title="Entrar"
             showSocial
         >
             <Form {...form}>

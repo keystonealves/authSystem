@@ -4,8 +4,15 @@ import { FcGoogle } from "react-icons/fc"
 import { FaGithub } from "react-icons/fa"
 import { Button } from "@/components/ui/button"
 import { Separator } from "../ui/separator"
+import { signIn } from "next-auth/react"
+import { DEFAULT_LOGIN_REDIRECT } from "@/route"
 
 export const Social = () => {
+
+    const onClick = (provider: "google" | "github") => {
+        signIn(provider, { callbackUrl: DEFAULT_LOGIN_REDIRECT })
+    };
+
     return (
         <div className="w-full space-y-5">
             <div className="relative">
@@ -26,7 +33,7 @@ export const Social = () => {
                     className="w-full"
                     variant={"outline"}
                     onClick={() => {
-                        console.log("Google Account")
+                        onClick("google")
                     }}
                     >
                     <FcGoogle className="w-5 h-5" />
@@ -37,7 +44,7 @@ export const Social = () => {
                     className="w-full"
                     variant={"outline"}
                     onClick={() => {
-                        console.log("Github Account")
+                        onClick("github")
                     }}
                     >
                     <FaGithub className="w-5 h-5" />
